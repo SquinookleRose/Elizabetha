@@ -63,7 +63,7 @@ function job_setup()
 
     skill_spells = S{
         'Temper', 'Temper II', 'Enfire', 'Enfire II', 'Enblizzard', 'Enblizzard II', 'Enaero', 'Enaero II',
-        'Enstone', 'Enstone II', 'Enthunder', 'Enthunder II', 'Enwater', 'Enwater II'}
+        'Enstone', 'Enstone II', 'Enthunder', 'Enthunder II', 'Enwater', 'Enwater II'} -- 
 
     include('Mote-TreasureHunter')
 
@@ -308,6 +308,21 @@ sets.precast.WS['Knights of round'] = {
 		right_ring="Epaminondas's Ring",
 		back={ name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
 	}
+sets.precast.WS['Mercy Stroke'] = {
+    ammo={ name="Coiste Bodhar", augments={'Path: A',}},
+    head={ name="Nyame Helm", augments={'Path: B',}},
+    body={ name="Nyame Mail", augments={'Path: B',}},
+    hands="Malignance Gloves",
+    legs={ name="Nyame Flanchard", augments={'Path: B',}},
+    feet="Leth. Houseaux +3",
+    neck="Rep. Plat. Medal",
+    waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+    left_ear="Ishvara Earring",
+    right_ear="Sherida Earring",
+    left_ring="Sroda Ring",
+    right_ring="Cornelia's Ring",
+    back={ name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
+}
 
     sets.precast.WS.Acc = set_combine(sets.precast.WS, {
 		ammo="Voluspa Tathlum",
@@ -339,7 +354,21 @@ sets.precast.WS['Knights of round'] = {
     sets.precast.WS['Vorpal Blade'] = sets.precast.WS['Knights of round']
     sets.precast.WS['Vorpal Blade'].Acc = sets.precast.WS['Knights of round']
 
-    sets.precast.WS['Savage Blade'] = sets.precast.WS['Knights of round']
+    sets.precast.WS['Savage Blade'] = {
+	    ammo="Crepuscular Pebble",
+		head={ name="Nyame Helm", augments={'Path: B',}},
+		body={ name="Nyame Mail", augments={'Path: B',}},
+		hands="Malignance Gloves",
+		legs={ name="Nyame Flanchard", augments={'Path: B',}},
+		feet="Leth. Houseaux +3",
+		neck="Rep. Plat. Medal",
+		waist={ name="Sailfi Belt +1", augments={'Path: A',}},
+		left_ear={ name="Moonshade Earring", augments={'Accuracy+4','TP Bonus +250',}},
+		right_ear="Ishvara Earring",
+		left_ring="Sroda Ring",
+		right_ring="Epaminondas's Ring",
+		back={ name="Sucellos's Cape", augments={'STR+20','Accuracy+20 Attack+20','STR+10','Weapon skill damage +10%','Damage taken-5%',}},
+}
     sets.precast.WS['Savage Blade'].Acc = sets.precast.WS['Knights of round']
 
     sets.precast.WS['Death Blossom'] = {
@@ -394,6 +423,8 @@ sets.precast.WS['Knights of round'] = {
 		right_ring="Weather. Ring",
 		back={ name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}},
 	}
+
+    sets.precast.WS['Imperator'] = sets.precast.WS
 
     sets.precast.WS['Aeolian Edge'] = {
 		ammo="Sroda Tathlum",
@@ -549,14 +580,14 @@ sets.precast.WS['Knights of round'] = {
 
     sets.midcast.EnhancingSkill = {
 		main={ name="Pukulatmuj +1", augments={'Path: A',}},
-		sub="Ammurapi Shield",
+		sub="Forfend +1",
 		ammo="Homiliary",
 		head="Befouled Crown",
 		body={ name="Viti. Tabard +3", augments={'Enhances "Chainspell" effect',}},
 		hands={ name="Viti. Gloves +3", augments={'Enhancing Magic duration',}},
 		legs="Atrophy Tights +3",
 		feet="Leth. Houseaux +3",
-		neck="Melic Torque",
+		neck="Melic Torque", --Incanter's torque
 		waist="Olympus Sash",
 		left_ear="Andoaa Earring",
 		right_ear="Mimir Earring",
@@ -564,6 +595,11 @@ sets.precast.WS['Knights of round'] = {
 		ring2={name="Stikini Ring +1", bag="wardrobe2"},
 		back="Perimede Cape",
 	}
+
+    sets.midcast['Temper II'] = set_combine(sets.midcast.EnhancingSkill, {
+		sub="Arendsi Fleuret",
+	})
+    sets.midcast['Temper'] = sets.midcast['Temper II']
 
     sets.midcast.Regen = set_combine(sets.midcast.EnhancingDuration, {
         main="Bolelabunga",
@@ -727,7 +763,7 @@ sets.precast.WS['Knights of round'] = {
 	sets.midcast.Bind = sets.midcast.Silence
 	sets.midcast.Break = sets.midcast.Silence
 	sets.midcast.Gravity = sets.midcast.Silence
-	sets.midcast["Gravity ii"] = sets.midcast.Silence	
+	sets.midcast["Gravity II"] = sets.midcast.Silence	
 	
     sets.midcast["Sleep II"] = sets.midcast.Silence
     sets.midcast.Blind = sets.midcast.Silence
@@ -743,20 +779,20 @@ sets.precast.WS['Knights of round'] = {
 	sets.midcast["Distract III"] = {
         main="Daybreak",
         sub="Ammurapi Shield",
-        ammo="Regal Gem",
-        head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
-        body="Atrophy Tabard +3",
-        hands="Leth. Ganth. +3",
-        legs={ name="Psycloth Lappas", augments={'Mag. Acc.+10','Spell interruption rate down +15%','MND+7',}},
-        feet={ name="Vitiation Boots +3", augments={'Immunobreak Chance',}},
-        neck={ name="Dls. Torque +2", augments={'Path: A',}},
-        waist="Obstin. Sash",
-        left_ear="Malignance Earring",
-        right_ear=="Regal Earring",
-        ring1={name="Stikini Ring +1", bag="wardrobe"},
-        ring2={name="Stikini Ring +1", bag="wardrobe2"},
-        back={ name="Ghostfyre Cape", augments={'Enfb.mag. skill +9','Enha.mag. skill +6','Mag. Acc.+10','Enh. Mag. eff. dur. +20',}},
-    }
+		ammo="Regal Gem",
+		head={ name="Viti. Chapeau +3", augments={'Enfeebling Magic duration','Magic Accuracy',}},
+		body="Atrophy Tabard +3",
+		hands="Leth. Ganth. +3",
+		legs="Leth. Fuseau +3",
+		feet={ name="Vitiation Boots +3", augments={'Immunobreak Chance',}},
+		neck={ name="Dls. Torque +2", augments={'Path: A',}},
+		waist={ name="Obstin. Sash", augments={'Path: A',}},
+		left_ear="Malignance Earring",
+		right_ear="Friomisi Earring",
+		left_ring="Stikini Ring +1",
+		right_ring="Stikini Ring +1",
+		back={ name="Sucellos's Cape", augments={'MND+20','Mag. Acc+20 /Mag. Dmg.+20','MND+10','Weapon skill damage +10%','Phys. dmg. taken-10%',}},
+}
 	sets.midcast["Frazzle III"] = sets.midcast["Distract III"]
 
 	sets.midcast["Paralyze II"] = sets.midcast.MndEnfeebles
@@ -904,7 +940,8 @@ sets.precast.WS['Knights of round'] = {
     sets.idle.Town = set_combine(sets.idle, {
 		main="Murgleis",
 		sub={ name="Excalibur", augments={'Path: A',}},
-		ammo="Sroda Tathlum",
+		range="Ullr",
+		ammo="Raetic Arrow",
 		head="Pixie Hairpin +1",
 	    body="Adamantite Armor",
 		hands={ name="Amalric Gages +1", augments={'INT+12','Mag. Acc.+20','"Mag.Atk.Bns."+20',}},
